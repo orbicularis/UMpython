@@ -77,47 +77,83 @@
 ##    
 ##print(max(winner))
 
-##EXERCISE 1 - ADDRESSES PULLED FROM FILE
+####EXERCISE 2 - ADDRESSES PULLED FROM FILE
+####import string
+##mbox = open('mbox-short.txt')
+##hourTally = dict()
+##hourList = list()
+##
+##for line in mbox:
+##    newLine = line.find('From ')
+##    if newLine is not 0:
+##        continue
+##    else:
+####        print(line)
+##        colon = line.find(':')
+##        hours = line[colon-2 : colon]
+####        print(hours)
+##
+##    if hours not in hourTally:
+##        hourTally[hours] = 1
+##    else:
+##        hourTally[hours] += 1
+##
+####print(hourTally)
+##for hour, tally in hourTally.items():
+##    hourList.append((hour, tally))
+##    hourList.sort()
+##
+##for hour, tally in hourList:
+##    print(hour, tally)
+
+####EXERCISE 3 - counting letters 
 ##import string
-mbox = open('mbox-short.txt')
-counts = dict()
-winner = list()
-
-for line in mbox:
-    newLine = line.find('From ')
-    if newLine is not 0:
-        continue
-    else:
-##        print(line)
-        amper = line.find('@')
-        endSpace = line.find(' ', amper)
-        domains = line[amper+1 : endSpace]
-##        print(domain)
-
-        if domains not in counts:
-            counts[domains] = 1
-        else:
-            counts[domains] += 1
-
-for x, y in counts.items():
-    winner.append((y, x))
-    
-print(max(winner))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+##mbox = open('mbox-short.txt')
+##letterTally = dict()
+##letterList = list()
+##
+##
+##
+####for character in str:
+####   if(character not in punctuation):
+####       result += character
+####print (result)
+##
+##
+##
+##for line in mbox:
+##    lineLow = line.lower()
+##    lineStrip = lineLow.strip()
+##    lineSplit = list(lineStrip)
+####    print(lineSplit)
+##
+##for letters in lineSplit:
+##    if letter not in letterTally:
+##        letterTally[letter] = 1
+##    else:
+##        letterTally[letter] += 1
+##
+##print(letterTally)
+##
+##
+####for line in mbox:
+####    newLine = line.find('From ')
+####    if newLine is not 0:
+####        continue
+####    else:
+######        print(line)
+####        colon = line.find(':')
+####        hours = line[colon-2 : colon]
+######        print(hours)
+####
+####    if hours not in hourTally:
+####        hourTally[hours] = 1
+####    else:
+####        hourTally[hours] += 1
+##
+##
+##
+##
+##
 
 
