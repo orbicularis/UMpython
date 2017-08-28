@@ -1,3 +1,4 @@
+
 ##import re
 ##hand = open('mbox-short.txt')
 ##for line in hand:
@@ -39,11 +40,11 @@
 ##         if len(lst) > 0:
 ##             print(lst)
 
-##here's the email search to find the hour of the sent email
-import re
-s = open('mbox-short.txt')
-for line in s:
-         line = line.strip()
-         lst = re.findall('^From .* ([0-9][0-9])', line)
-         if len(lst) > 0:
-             print(lst)
+####here's the email search to find the hour of the sent email
+##import re
+##s = open('mbox-short.txt')
+##for line in s:
+##         line = line.strip()
+##         lst = re.findall('^From .* ([0-9][0-9])', line)
+##         if len(lst) > 0:
+##             print(lst)
