@@ -46,18 +46,18 @@
 ##fhand.write(picture)
 ##fhand.close()
 
-####THIS is a urllib example
-##import urllib.request, urllib.parse, urllib.error
-##counts = dict()
-##theWords = list()
-##
-##fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
-##for line in fhand:
-##    words = line.decode().split()
-##    for word in words:
-##        counts[word] = counts.get(word, 0) +1
-####    print(line.decode().strip())
-##print(counts)
+##THIS is a urllib example
+import urllib.request, urllib.parse, urllib.error
+counts = dict()
+theWords = list()
+
+fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+for line in fhand:
+    words = line.decode().split()
+    for word in words:
+        counts[word] = counts.get(word, 0) +1
+    print(line.decode().strip())
+print(counts)
 
 
 ####THIS parses html
@@ -115,17 +115,17 @@
 ##fhand.write(img)
 ##fhand.close()
 
-##THIS saves binary files to disk in blocks (NO MEM ISSUE)
-import urllib.request, urllib.parse, urllib.error
-
-img = urllib.request.urlopen('http://data.pr4e.org/cover3.jpg')
-fhand = open('cover3.jpg', 'wb')
-size =  0
-while True:
-    info = img.read(100000)
-    if len(info) < 1: break
-    size = size + len(info)
-    fhand.write(info)
-
-print(size, 'characters copied.')
-fhand.close()
+####THIS saves binary files to disk in blocks (NO MEM ISSUE)
+##import urllib.request, urllib.parse, urllib.error
+##
+##img = urllib.request.urlopen('http://data.pr4e.org/cover3.jpg')
+##fhand = open('cover3.jpg', 'wb')
+##size =  0
+##while True:
+##    info = img.read(100000)
+##    if len(info) < 1: break
+##    size = size + len(info)
+##    fhand.write(info)
+##
+##print(size, 'characters copied.')
+##fhand.close()
