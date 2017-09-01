@@ -66,35 +66,48 @@
 ##except:
 ##    print('')
 
-##THIS is exercise 2 counting characters returned
-import socket
-bucket = list()
-counter = 0
+####THIS is exercise 2 counting characters returned
+##import socket
+##bucket = list()
+##
+####userURL = input('Please enter a URL: ')
+##userURL = 'http://data.pr4e.org/romeo.txt'
+##splitURL = userURL.split('/')
+##domain = splitURL[2]
+##tank = list()
+##count = 0
+##
+##mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+##mysock.connect((domain, 80))
+##
+##cmd = 'GET ' + userURL + ' HTTP/1.0\r\n\r\n'
+##cmd1 = cmd.encode()
+##mysock.send(cmd1)
+##
+##while True:
+##    data = mysock.recv(512)
+##    if (len(data) < 1):
+##        break
+####    print(data.decode())
+##    bucket = data.decode()
+##    for letter in bucket:
+##        tank.extend(letter)
+##        count += 1
+##print('First 100 chracters: \n', tank[0:100])
+##print('Total characters in document is', count)
 
-
-userURL = input('Please enter a URL: ')
-splitURL = userURL.split('/')
-domain = splitURL[2]
-
-mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-mysock.connect((domain, 80))
-
-cmd = 'GET ' + userURL + ' HTTP/1.0\r\n\r\n'
-cmd1 = cmd.encode()
-mysock.send(cmd1)
-
-while True:
-    data = mysock.recv(512)
-    if (len(data) < 1):
-        break
-    print(data.decode())
-    bucket = data.decode()
-    bucket = bucket.split()
-    print(bucket)
-##    if data not in bucket:
-##        bucket.extend(data.decode())
-##    print(bucket[0:300])
-
-mysock.close()
-
+####THIS is exercise 3, using URLLIB
+##import urllib.request, urllib.parse, urllib.error
+##theWord = list()
+##count = 0
+##
+##fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+##for line in fhand:
+##    words = line.decode().split()
+##    for word in words:
+##        theWord.extend(word)
+##        count += 1
+##        
+##print(theWord[0:5])
+##print(count)
 
