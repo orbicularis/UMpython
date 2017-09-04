@@ -98,49 +98,68 @@
 
 ####THIS is exercise 3, using URLLIB
 ##import urllib.request, urllib.parse, urllib.error
-##theWord = list()
-##count = 0
 ##
 ##fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+##
+##words = list()
 ##for line in fhand:
-##    words = line.decode().split()
+##    word = list(line.decode().split())
+##    words.extend(word)
+##
+##wordString = str(words)
+##out = "[],'"
+##for char in out:
+##    wordString = wordString.replace(char, '')
+####print(wordString)
+##
+##letters = list(wordString)
+##print(letters[0:10])
+##
+##count = 0
+##for letter in letters:
+##    count += 1
+##
+##print(count)
+
+##x = list(letters[1:])
+##
+##print(x)
+
+    
+##print(letters)
+
 ##    for word in words:
 ##        theWord.extend(word)
 ##        count += 1
-##        
+        
 ##print(theWord[0:5])
 ##print(count)
 
-##THIS is exercise 4
-import urllib.request, urllib.parse, urllib.error
-from bs4 import BeautifulSoup
-import ssl
-chars = list()
-
-ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
-
-##url = input('Enter - ')
-url = ('http://www.dr-chuck.com/page1.htm')
-html = urllib.request.urlopen(url, context=ctx).read()
-soup = BeautifulSoup(html, 'html.parser')
-
-##print(soup)
-print(html)
-
-for letters in html:
-##    html.split()
-    chars.append(letters)
+####THIS is exercise 4
+##import urllib.request, urllib.parse, urllib.error
+##from bs4 import BeautifulSoup
+##import ssl
+##
+##ctx = ssl.create_default_context()
+##ctx.check_hostname = False
+##ctx.verify_mode = ssl.CERT_NONE
+##
+####url = input('Enter - ')
+##url = ('http://www.dr-chuck.com/page1.htm')
+##html = urllib.request.urlopen(url, context=ctx).read()
+##soup = BeautifulSoup(html, 'html.parser')
+##
+####print(soup)
+##
+##words = str(soup)
+##letters = list(words)
+##print(letters[0:20])
+##
+##count = 0
+##
+##for letter in letters:
+##    count += 1
+##
+##print(count)
     
 
-print(chars)
-
-
-##tags = soup('a')
-##for tag in tags:
-##    print(tag.get('href', None))
-
-
-
-    
