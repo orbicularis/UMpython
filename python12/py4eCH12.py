@@ -111,3 +111,36 @@
 ##print(theWord[0:5])
 ##print(count)
 
+##THIS is exercise 4
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup
+import ssl
+chars = list()
+
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+##url = input('Enter - ')
+url = ('http://www.dr-chuck.com/page1.htm')
+html = urllib.request.urlopen(url, context=ctx).read()
+soup = BeautifulSoup(html, 'html.parser')
+
+##print(soup)
+print(html)
+
+for letters in html:
+##    html.split()
+    chars.append(letters)
+    
+
+print(chars)
+
+
+##tags = soup('a')
+##for tag in tags:
+##    print(tag.get('href', None))
+
+
+
+    
