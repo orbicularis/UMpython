@@ -162,75 +162,98 @@
 ##
 ##print(count)
     
-####THIS IS ASSIGNMENT 1 URL: 'http://py4e-data.dr-chuck.net/comments_42.html'
-##import urllib.request, urllib.parse, urllib.error
+######THIS IS ASSIGNMENT 1 URL: 'http://py4e-data.dr-chuck.net/comments_42.html'
+### EXTRA CODE EXAMPLE To run this, you can install BeautifulSoup
+### https://pypi.python.org/pypi/beautifulsoup4
+### Or download the file
+### http://www.py4e.com/code3/bs4.zip
+### and unzip it in the same directory as this file
+##
+##from urllib.request import urlopen
 ##from bs4 import BeautifulSoup
 ##import ssl
+##import re
 ##
-####ctx = ssl.create_default_context()
-####ctx.check_hostname = False
-####ctx.verify_mode = ssl.CERT_NONE
+### Ignore SSL certificate errors
+##ctx = ssl.create_default_context()
+##ctx.check_hostname = False
+##ctx.verify_mode = ssl.CERT_NONE
 ##
-##
-####url = input('Enter - ')
 ##url = ('http://py4e-data.dr-chuck.net/comments_42.html')
-##print(url)
+##html = urlopen(url, context=ctx).read()
+####print(html)
 ##
-##html = urllib.request(url)
+### html.parser is the HTML parser included in the standard Python 3 library.
+### information on other HTML parsers is here:
+### http://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-a-parser
+##soup = BeautifulSoup(html, "html.parser")
+####print(soup)
 ##
-####.urlopen(url).read()
-##print(html)
+##### Retrieve all of the anchor tags
+####tags = soup('td')
+####print(tags)
 ##
-####soup = BeautifulSoup(html, 'html.parser')
+### Retrieve all of the anchor tags
+##summer = []
+##tags = soup('span')
+##for tag in tags:
+####    Look at the parts of a tag
+####   print('TAG:',tag)
+####   print('URL:',tag.get('href', None))
+####   print('Contents:',tag.contents[0])
+####   print('Attrs:',tag.attrs)
+####   print('Span:',tag.span)
+####   print(soup.find("span", class_="comments"))
+##   adder = int(tag.contents[0])
+##   summer.append(adder)
+##   fall = sum(summer)
+####   print(adder)
 ##
-####words = str(soup)
-####letters = list(words)
-####print(letters[0:20])
-####
-####count = 0
-####
-####for letter in letters:
-####    count += 1
-####
-####print(count)
+##print(summer)
+##print(fall)
 
-# To run this, you can install BeautifulSoup
+####THIS IS ASSIGNMENT 1 URL: 'http://py4e-data.dr-chuck.net/comments_15167.html'
+# EXTRA CODE EXAMPLE To run this, you can install BeautifulSoup
 # https://pypi.python.org/pypi/beautifulsoup4
-
 # Or download the file
 # http://www.py4e.com/code3/bs4.zip
 # and unzip it in the same directory as this file
 
-
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import ssl
+import re
 
 # Ignore SSL certificate errors
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-url = input('Enter - ')
+url = ('http://py4e-data.dr-chuck.net/comments_15167.html')
 html = urlopen(url, context=ctx).read()
-
+##print(html)
 
 # html.parser is the HTML parser included in the standard Python 3 library.
 # information on other HTML parsers is here:
 # http://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-a-parser
 soup = BeautifulSoup(html, "html.parser")
-print(soup)
+##print(soup)
 
+# Retrieve all of the anchor tags
+summer = []
+tags = soup('span')
+for tag in tags:
+##    Look at the parts of a tag
+##   print('TAG:',tag)
+##   print('URL:',tag.get('href', None))
+##   print('Contents:',tag.contents[0])
+##   print('Attrs:',tag.attrs)
+##   print('Span:',tag.span)
+##   print(soup.find("span", class_="comments"))
+   adder = int(tag.contents[0])
+   summer.append(adder)
+   fall = sum(summer)
+##   print(adder)
 
-### Retrieve all of the anchor tags
-##tags = soup('t')
-##print(tags)
-
-##for tag in tags:
-##    # Look at the parts of a tag
-##    print('TAG:', tag)
-##    print('URL:', tag.get('href', None))
-##    print('Contents:', tag.contents[0])
-##    print('Attrs:', tag.attrs)
-
-    
+##print(summer)
+print(fall)
