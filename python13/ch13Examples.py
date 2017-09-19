@@ -40,20 +40,58 @@
 ##    print('Id', item.find('id').text)
 ##    print('Attribute', item.get("x"))
 
-## THIS IS EXAMPLE 3, json2.py
+#### THIS IS EXAMPLE 3, json2.py
+##import json
+##
+##data = '''
+##[
+##    { "id" : "001", "x" : "2", "name" : "Chuck"},
+##    { "id" : "009", "x" : "7", "name" : "Brent"}
+##]'''
+##
+##info = json.loads(data)
+##print('User count:', len(info))
+##
+##for item in info:
+##    print('Name', item['name'])
+##    print('Id', item['id'])
+##    print('Attribute', item['x'])
+##
+
+## THIS IS THE GOOGLE GEOCODING API, USING JSON
+import urllib.request, urllib.parse, urllib.error
 import json
 
-data = '''
-[
-    { "id" : "001", "x" : "2", "name" : "Chuck"},
-    { "id" : "009", "x" : "7", "name" : "Brent"}
-]'''
+serviceurl = 'http://maps.googleapis.com/maps/api/geocode/json?'
 
-info = json.loads(data)
-print('User count:', len(info))
 
-for item in info:
-    print('Name', item['name'])
-    print('Id', item['id'])
-    print('Attribute', item['x'])
-    
+while True:
+    address = input('Please enter location: ')
+    if len(address) < 1: break
+
+    url = serviceurl + urllib.parse.urlencode(
+        {'address': address})
+
+    print('Retrieving', url)
+    uh = urllib.request.urlopen(url)
+    data = uh.read().decode()
+    print('Retirieved', len(data), 'characters')
+
+    try:
+        js = json.loads(data)
+    except:
+        js = None
+
+    if not js or 'status' not in js or js['status'] != 'OK':
+        print('=== Failure to Retrieve ===')
+        print(data)
+        continue
+
+##    print(json.dumps(js, indent=4))
+
+    lat = js["results"][0]["geometry"]["location"]["lat"]
+    lng = js["results"][0]["geometry"]["location"]["lng"]
+    print('lat', lat, 'lng', lng)
+    location = js['results'][0]['formatted_address']
+    print(location)
+
