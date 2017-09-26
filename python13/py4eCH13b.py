@@ -1,69 +1,69 @@
-import urllib.request, urllib.parse, urllib.error
-import json
-counter = []
-
-##data = '''[{ "id" : "001", "x" : "2", "name" : "Chuck"} ,{ "id" : "009", "x" : "7", "name" : "Chuck"}]'''
-
-##address = input('Enter location: ')
-address = ('http://py4e-data.dr-chuck.net/comments_42.json')
-while True:
-    if len(address) < 1:
-        break
-    print('Retrieving', address)
-    url = urllib.request.urlopen(address)
-    data = url.read().decode()
-    print('Retrieved', len(data), 'characters')
-    alpha = json.loads(data)
-##print(alpha)
-    print(json.dumps(alpha, indent=4))
-
-##name = alpha['comments'][0]['name']
-    count = alpha['comments'][0]['count']
-    counter.append(count)
-    print(count)
-    print(counter)
-
-
-
-
-
-
-
-
-####=====================================TEST CODE============================
 ##import urllib.request, urllib.parse, urllib.error
 ##import json
+##counter = 0
+##addbox = []
 ##
-### Note that Google is increasingly requiring keys
-### for this API
-##serviceurl = 'http://maps.googleapis.com/maps/api/geocode/json?'
+####data = '''[{ "id" : "001", "x" : "2", "name" : "Chuck"} ,{ "id" : "009", "x" : "7", "name" : "Chuck"}]'''
 ##
+####address = input('Enter location: ')
+##address = ('http://py4e-data.dr-chuck.net/comments_42.json')
 ##while True:
-##    address = input('Enter location: ')
-##    if len(address) < 1: break
-##
-##    url = serviceurl + urllib.parse.urlencode(
-##        {'address': address})
-##
-##    print('Retrieving', url)
-##    uh = urllib.request.urlopen(url)
-##    data = uh.read().decode()
+##    if counter == 1:
+##        break
+##    if len(address) < 1:
+##        break
+##    print('Retrieving', address)
+##    url = urllib.request.urlopen(address)
+##    data = url.read().decode()
 ##    print('Retrieved', len(data), 'characters')
+##    alpha = json.loads(data)
+####print(alpha)
+##    print(json.dumps(alpha, indent=4))
 ##
-##    try:
-##        js = json.loads(data)
-##    except:
-##        js = None
+##    for add in alpha['comments']:
+##        print(add['name'])
+##        print(add['count'])
+##        addbox.append(add['count'])
+##    print(addbox)
+##    tally = sum(int(x) for x in addbox)
+##    print(tally)
 ##
-##    if not js or 'status' not in js or js['status'] != 'OK':
-##        print('==== Failure To Retrieve ====')
-##        print(data)
-##        continue
+##        
 ##
-##    print(json.dumps(js, indent=4))
-##
-##    lat = js["results"][0]["geometry"]["location"]["lat"]
-##    lng = js["results"][0]["geometry"]["location"]["lng"]
-##    print('lat', lat, 'lng', lng)
-##    location = js['results'][0]['formatted_address']
-##    print(location)
+####name = alpha['comments'][0]['name']
+####    add = alpha['comments'][0]['count']
+####    addbox.append(add)
+####    print(add)
+####    print(addbox)
+##    counter += 1
+
+## ====================HERE IS THE CLEANED UP FINAL==================
+
+import urllib.request, urllib.parse, urllib.error
+import json
+counter = 0
+addbox = []
+
+##address = input('Enter location: ')
+address = ('http://py4e-data.dr-chuck.net/comments_15170.json')
+while True:
+    if counter == 1:
+        break
+    if len(address) < 1:
+        break
+##    print('Retrieving', address)
+    url = urllib.request.urlopen(address)
+    data = url.read().decode()
+##    print('Retrieved', len(data), 'characters')
+    alpha = json.loads(data)
+##    print(alpha)
+##    print(json.dumps(alpha, indent=4))
+
+    for add in alpha['comments']:
+##        print(add['name'])
+##        print(add['count'])
+        addbox.append(add['count'])
+##    print(addbox)
+    tally = sum(int(x) for x in addbox)
+    print(tally)
+    counter += 1
