@@ -1,3 +1,4 @@
+
 ##stuff = list()
 ##stuff.append('python')
 ##stuff.append('chuck')
@@ -30,23 +31,37 @@
 ##print(type(franz))
 ##print(type(webster))
 
-## THIS IS party5.py
-class PartyAnimal:
-   x = 0
-   name = ''
-   def __init__(self, nam):
-     self.name = nam
-     print(self.name,'was constructed')
+#### THIS IS party5.py
+##class PartyAnimal:
+##   x = 0
+##   name = ''
+##   def __init__(self, nam):
+##     self.name = nam
+##     print(self.name,'was constructed')
+##
+##   def party(self) :
+##     self.x = self.x + 1
+##     print(self.name,'party count',self.x)
+##
+##s = PartyAnimal('Sally')
+##s.party()
+##j = PartyAnimal('Jim')
+##j.party()
+##s.party()
 
-   def party(self) :
-     self.x = self.x + 1
-     print(self.name,'party count',self.x)
+## THIS IS INHERITANCE party6.py ================================
+from party import PartyAnimal
 
-s = PartyAnimal('Sally')
+class CricketFan(PartyAnimal):
+   points = 0
+   def six(self):
+      self.points = self.points + 6
+      self.party()
+      print(self.name,"points",self.points)
+
+s = PartyAnimal("Sally")
 s.party()
-j = PartyAnimal('Jim')
+j = CricketFan("Jim")
 j.party()
-s.party()
-
-
-
+j.six()
+print(dir(j))
