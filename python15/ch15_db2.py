@@ -1,0 +1,21 @@
+## THIS IS db2.py A BASIC DATABASE PROGRAM
+
+import sqlite3
+
+conn = sqlite3.connect('music.sqlite')
+cur = conn.cursor()
+
+cur.execute('INSERT INTO Tracks (title, plays) VALUES (?, ?)',
+            ('Thunderstuck', 20))
+cur.execute('INSERT INTO tracks (title, plays) VALUES (?, ?)',
+            ('My Way', 15))
+conn.commit()
+
+print('Tracks:')
+cur.execute('SELECT titles, plays FROM Tracks')
+for row in cur:
+    print(row)
+
+cur.execute('DELETE FROM Tracks WHERE plays < 100')
+
+cur.close()
