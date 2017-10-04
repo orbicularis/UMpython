@@ -6,13 +6,13 @@ conn = sqlite3.connect('music.sqlite')
 cur = conn.cursor()
 
 cur.execute('INSERT INTO Tracks (title, plays) VALUES (?, ?)',
-            ('Thunderstuck', 20))
+    ('Thunderstuck', 20))
 cur.execute('INSERT INTO tracks (title, plays) VALUES (?, ?)',
-            ('My Way', 15))
+    ('My Way', 15))
 conn.commit()
 
 print('Tracks:')
-cur.execute('SELECT titles, plays FROM Tracks')
+cur.execute('SELECT title, plays FROM Tracks')
 for row in cur:
     print(row)
 
