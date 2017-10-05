@@ -1,11 +1,43 @@
 #### THIS IS ASSIGNMENT 1 FOR CHAPTER 15 - AGE DATABASE
 
+##import re
+import string
+import sqlite3
+
 data = open('mbox-short.txt')
-print(data)
-    
+bread = dict()
+
+for line in data:
+    line = line.strip()
+    newline = line.find('From')
+    if newline is not 0:
+        continue
+    else:
+        amper = line.find('@')
+        endSpace = line.find('.', amper)
+        domains = line[amper+1 : endSpace]
+        print(domains)
+
+        if domains not in bread:
+            bread[domains] = 1
+        else:
+            bread[domains] += 1
+
+print(bread)
 
 
+##    domains = line[amper+1 : endSpace]
+##    print(domains)
 
+##        amper = line.find('@')
+##        endSpace = line.find(' ', amper)
+##        domains = line[amper+1 : endSpace]
+####        print(domain)
+##
+##        if domains not in counts:
+##            counts[domains] = 1
+##        else:
+##            counts[domains] += 1
 
 ##
 ##import sqlite3

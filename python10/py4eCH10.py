@@ -65,7 +65,7 @@
 ##        amper = line.find('@')
 ##        endSpace = line.find(' ', amper)
 ##        domains = line[amper+1 : endSpace]
-####        print(domain)
+##        print(domains)
 ##
 ##        if domains not in counts:
 ##            counts[domains] = 1
