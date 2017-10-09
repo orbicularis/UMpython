@@ -7,8 +7,8 @@ cur = conn.cursor()
 ## Do some setup
 cur.executescript('''
 DROP TABLE IF EXISTS User;
-DROP TABLE IF EXISTS Member;
 DROP TABLE IF EXISTS Course;
+DROP TABLE IF EXISTS Member;
 
 CREATE TABLE User (
     id     INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
@@ -20,22 +20,22 @@ CREATE TABLE Course (
     title  TEXT UNIQUE
 );
 
-CREATE TABLE Role (
+CREATE TABLE Member (
     user_id     INTEGER,
     course_id   INTEGER,
-    role        INTEGER,
+    role      INTEGER,
     PRIMARY KEY (user_id, course_id)
 )
 ''')
 
-fname = input('Enter file name: ')
-if len(fname) < 1:
+####fname = input('Enter file name: ')
+####if len(fname) < 1:
 fname = 'roster_data.json'
 
 
-## [
-##   [ "Charley", "si110", 1 ],
-##   [ "Mea", "si110", 0 ],
+#### [
+####   [ "Charley", "si110", 1 ],
+####   [ "Mea", "si110", 0 ],
 
 str_data = open(fname).read()
 json_data = json.loads(str_data)
@@ -47,7 +47,8 @@ for entry in json_data:
     role = entry[2];
 
     print((name, title, role))
-
+##    print((member))
+    
     cur.execute('''INSERT OR IGNORE INTO User (name)
         VALUES ( ? )''', ( name, ) )
     cur.execute('SELECT id FROM User WHERE name = ? ', (name, ))
@@ -57,11 +58,41 @@ for entry in json_data:
         VALUES ( ? )''', ( title, ) )
     cur.execute('SELECT id FROM Course WHERE title = ? ', (title, ))
     course_id = cur.fetchone()[0]
+
+
 #############################WORKIGN ON THIS PART NOW##############################################
-    cur.execute('''INSERT OR IGNORE INTO Role (role)
-        VALUES ( ? )''', ( role, ) )
-    cur.execute('SELECT id FROM Role WHERE role = ? ', (role, ))
-        (user_id, course_id) VALUES ( ?, ? )''',
-        ( user_id, course_id ) )
+    cur.execute('''INSERT OR IGNORE INTO Member (user_id, course_id, role)
+        VALUES ( ?, ?, ? )''', ( user_id, course_id, role ) )
+##    cur.execute('SELECT id FROM member WHERE member = ? ', (member, ))
+##        (user_id, course_id) VALUES ( ?, ? )''',
+##        ( user_id, course_id ) )
+
+####    cur.execute('''INSERT OR REPLACE INTO Track (title, album_id, genre_id, len, rating, count) 
+####        VALUES ( ?, ?, ?, ?, ?, ? )''', ( track, album_id, genre_id, length, rating, count ) )
+####    cur.execute('SELECT id FROM Track WHERE title = ? ', (track, ))
+####    album_id = cur.fetchone()[0]
 
 conn.commit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
